@@ -104,7 +104,7 @@ console.log(oldCars.length);
 // A buyer is interested in seeing only BMW and Audi cars within the inventory.  Return an array that only contains BMW and Audi cars.  Once you have populated the BMWAndAudi array, use JSON.stringify() to show the results of the array in the console.
 let BMWAndAudi = [];
 for(var i=0; i<inventory.length; i++){
-    if(inventory[i].car_make == "Audi" || "BMW"){
+    if(inventory[i].car_make == "Audi" || inventory[i].car_make == "BMW"){
         BMWAndAudi.push(inventory[i].car_model);
     }
 }
@@ -112,3 +112,45 @@ console.log(JSON.stringify(BMWAndAudi));
 
 
 
+// STRETCH QUESTION 1
+function HOF(callback, name) {
+    let varb = name;
+    callback(`Hi, my name is ${varb}`);
+}
+HOF(alert, "Anubhav");
+
+const anArray = [{num: 1}, {num: 2}, {num: 3}, {num: 4}];
+const total = anArray.reduce((accumulator, obj) => {
+    return accumulator += obj.num;
+}, 0)
+console.log(total);
+
+// STRETCH QUESTION 2
+// .filter
+let carId = inventory.filter((obj) => {
+    return obj.id === 33;
+})
+console.log(`Car 33 is a ${carId[0].car_year} ${carId[0].car_make} ${carId[0].car_model}`);
+
+let carOlder = inventory.filter((obj) => {
+    return obj.car_year < 2000;
+})
+console.log(carOlder.length);
+
+let BMWAudiFilter = inventory.filter((obj) => {
+    return  obj.car_make === "Audi" || obj.car_make === "BMW"
+})
+console.log(JSON.stringify(BMWAudiFilter.map((obj) => {return obj.car_model})));
+
+
+
+// .map
+let carModelsMarketing = inventory.map((obj) => {
+    return obj.car_model
+})
+console.log(carModelsMarketing.sort());
+
+let carYearsAccounting = inventory.map((obj) => {
+    return obj.car_year
+})
+console.log(carYearsAccounting);
